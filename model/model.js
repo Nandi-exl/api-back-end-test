@@ -1,8 +1,8 @@
 class AssignmentModel {
-    static DefineDays () {
+    static DefineDays (day) {
        return new Promise((res, rej) => {
             const date = new Date();
-            let day = date.getDay();
+            day = date.getDay();
             if(day == 0 || day == 6){
                 res(true)
             }
@@ -10,9 +10,10 @@ class AssignmentModel {
        })
     }
 
-    static DefineYears(year){
+    static DefineYears(data){
+      const request = [data.year]
        return new Promise((res, rej) => {
-            const leap = new Date(year, 1, 29).getDate() === 29;
+            const leap = new Date(request, 1, 29).getDate() === 29;
             if (leap) {
               res(true)
             }
